@@ -1,0 +1,508 @@
+// While you can edit this file, it's best to put your changes in
+// "User/toolingapi.sublime-settings", which overrides the settings in here.
+// Settings may also be placed in file type specific options files
+{
+    // In order to prevent plugin update override your toolingapi settings,
+    // you should save the workspace, login_url, username and password to user settings.
+    // If you want to do this, you should click [HaoIDE > Settings > Setting - User], and copy these settings into it
+    // User Settings is prior to Default Settings, it's very important.
+    // You should have more than one project in "projects", however, only one project can be default
+    // Every time you switch the project, the update projects settings will be saved to user settings.
+    // 
+    // Workspace in OSX is different with windows, 
+    // workspace can be "/Users/<Your User>/salesforce/workspace"
+    // If you don't set your own workspace, plugin will save your project to 
+    // `/Data/Packages/User/HaoIDE/<Project_Name>`
+    "workspace" : "",
+    "projects" : {
+        "pro-sublime" : {
+            /**
+             * Below are Required Properties
+             */
+            
+            // default is true means current project is active project
+            // There should be only one active project in projects settings
+            "default" : true,
+
+            // Login URL,
+            // sandbox: https://test.salesforce.com
+            // production: https://login.salesforce.com
+            "login_url" : "https://login.salesforce.com",
+
+            // Login username and password
+            "password" : "sublime111111",
+            "username" : "apex.sublime@dev.com",
+
+            /**
+             * Below are optional properties
+             */
+            
+            // If you don't need security token,
+            // just leave it as below or just delete below
+            "security_token" : "",
+
+            // Valid value should be package namespace
+            // for example, "allowed_packages": ["sinaweibo", "twitter", "facebook"],
+            "allowed_packages" : [],
+
+            // Allow custom workspace for every single project
+            "workspace": "",
+
+            // If this attribute is not exist, it will be populated when create your first new project
+            // After that time, if you want to subscribe more objects or unsubscribe exist objects,
+            // you can do it by ``Settings > Toggle Metadata Objects`` in the main menu
+            "subscribed_metadata_objects": []
+        }
+    },
+
+    // Files not shown in the sidebar and Command Palette
+    // Just work after new project is invoked or click ``HaoIDE > Update > Update Project Patterns``
+    "file_exclude_patterns": [
+        // "*.md",
+        // "*-history.*",
+        "*.*-meta.xml",
+        "*.sublime-project"
+    ],
+
+    // Folders not shown in the sidebar and Command Palette
+    // Just work after new project is invoked or click ``HaoIDE > Update > Update Project Patterns``
+    "folder_exclude_patterns": [
+        // ".history",
+        ".templates"
+    ],
+
+    // Solution for issue #49 in https://github.com/xjsender/SublimeApex
+    // It works when reload sObjects cache or export workbooks
+    // Setting for controlling maximum concurrent connections with salesforce
+    "maximum_concurrent_connections": 30,
+
+    // API version
+    "api_version" : 35,
+
+    // Browser Path Setting,
+    // You should set a valid browser path, otherwise, it will have problem.
+    // Some policies prohibit setting chrome as default browser, so this setting is here
+    "default_chrome_path" : "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe",
+
+    // Indicate whether add time suffix for project name
+    // When this setting value is true, you create a new project at yesterday and
+    // you refresh it's code today, a new project folder will be created to keep the refreshed code
+    // Two methods to fix this bug:
+    //     1. Set this setting value to false,
+    //     2. Create new project every day.
+    // It depends on your choice.
+    "keep_project_name_time_suffix" : true,
+
+    // Login again every n minutes as below
+    "force_login_interval": 120,
+
+    // Automatically update change to server when save file
+    "auto_update_on_save": false,
+
+    // Indicate whether need confirmation for save operation
+    "confirm_on_save": false,
+
+    // Every time when you open a file, assume the project of this file is not the default project,
+    // if you set this setting to true, plugin will switch the default project to the project
+    // of the open file automatically when you open a file
+    "auto_switch_project_on_file_activated": false,
+
+    // Sync active file with sidebar, for example, if you set this value to true,
+    // every time when you open a file, plugin will reveal the file in the sidebar
+    "reveal_file_in_sidebar_on_file_activated": false,
+
+    // Debug Mode, after switch this setting to true, 
+    // you can see some debug logs in the console
+    "debug_mode": false,
+
+    // Metadata polling frequency, it works when retrieve files from server
+    "metadata_polling_frequency": 2,
+
+    // Indicate whether keep local change history of code file after code is saved successfully
+    "keep_local_change_history" : false,
+
+    // Check whether the LastModifiedById is current user
+    "check_save_conflict" : true,
+
+    // After component save succeed, flag for controlling whether track debug log for running user
+    "track_log_after_saved": true,
+
+    // Every time when you save component and error happened, the console will be open.
+    // When you edit the code according to the error message, this flag is used to indicate
+    // whether the console will be hidden automatically
+    "hidden_console_on_modify" : false,
+
+    // Every time when you save component and succeed, the output panel will be open.
+    // however, you want it to be hidden automatically after several seconds
+    "delay_seconds_for_hidden_output_panel_when_succeed" : 1,
+
+    // Indicate whether need to reload all symbol tables when creating new project
+    "reload_symbol_tables_when_create_project" : false,
+
+    // Indicate whether disable sobject fields completion
+    "disable_fields_completion" : false,
+
+    // Indicate whether disable Relationship field completion
+    "disable_relationship_completion" : false,
+
+    // Indicate whether disable picklist value completion
+    "disable_picklist_value_completion" : false,
+
+    // Indicate whether disable keyword completion
+    "disable_keyword_completion" : false,
+
+    // Indicate whether disable field list completion
+    "disable_soql_field_completion" : false,
+
+    // Indicate whether display both field name and field label for sobject field completion,
+    // If set false, it means just display field name
+    // If you change this setting, you need to reload sobject cache to ensure it work
+    "display_field_name_and_label" : true,
+
+    // Indicate whether disable attribute completion
+    "disable_component_attribute_completion": false,
+
+    // Flag to disable attribute value completion
+    "disable_component_attribute_value_completion": false,
+
+    // Flag to disable custom component attributes completion in visualforce page
+    "disable_custom_component_completion": false,
+
+    // Flag to disable apex variable completion in visualforce page
+    "disable_apex_completion_in_visualforce": false,
+
+    // Indicate whether disable html completion, 
+    // Because sublime text has the default html completion code,
+    // so this feature is disabled by default
+    "disable_html_completion": true,
+
+    // Flag to disable bootstrap3 completion
+    "disable_bootstrap_completion": false,
+
+    // Indicate whether keep history of execute_anonymous, query and run test to local ``.history`` path
+    "keep_operation_history" : true,
+
+    // Indicate whether switch project back to original after `deploy` or `retrieve from other server` is executed
+    "switch_back_after_migration": true,
+
+    // Bulk API batch size and batch bytes
+    // Maximum 10000 rows per batch
+    // Maximum 1000000 bytes per batch
+    "maximum_batch_size" : 10000,
+    "maximum_batch_bytes" : 1000000,
+
+    // Log Levels for anonymous code
+    "anonymous_log_levels" : [{
+            "log_category" : "Apex_Code",
+            "log_level" : "Debug"
+        }, {
+            "log_category" : "Apex_Profiling",
+            "log_level" : "Info"
+        }, {
+            "log_category" : "Callout",
+            "log_level" : "Info"
+        }, {
+            "log_category" : "DB",
+            "log_level" : "Info"
+        }, {
+            "log_category" : "Validation",
+            "log_level" : "Info"
+        }, {
+            "log_category" : "Workflow",
+            "log_level" : "Info"
+        }
+    ],
+
+    // Deploy Options, 
+    // If you just want to valid a deployment,
+    // you can copy this setting to user settings and set checkOnly to true
+    // 
+    // Enhancement for issue #96
+    // testLevel: NoTestRun, RunSpecifiedTests, RunLocalTests, RunAllTestsInOrg
+    // If you want to run specified test classes when deploy, 
+    // you can set testLevel to RunSpecifiedTests
+    "deploy_options" : {
+        "allowMissingFiles" : false,
+        "autoUpdatePackage" : false,
+        "checkOnly" : false,
+        "ignoreWarnings" : true,
+        "performRetrieve" : false,
+        "purgeOnDelete" : false,
+        "rollbackOnError" : true,
+        "singlePackage" : true,
+        "testLevel": "NoTestRun", 
+        "runTests" : ""
+    },
+
+    // The return number of "fetch logs" command
+    "last_n_logs" : 20,
+
+    // User Language
+    "user_language" : {
+        "Chinese (Simplified)" : "zh_CN",
+        "Chinese (Traditional)" : "zh_TW",
+        "Danish" : "da",
+        "Dutch" : "nl_NL",
+        "English" : "en_US",
+        "Finnish" : "fi",
+        "French" : "fr",
+        "German" : "de",
+        "Italian" : "it",
+        "Japanese" : "ja",
+        "Korean" : "ko",
+        "Portuguese (Brazil)" : "pt_BR",
+        "Russian" : "ru",
+        "Spanish" : "es",
+        "Spanish (Mexico)" : "es_MX",
+        "Swedish" : "sv",
+        "Thai" : "th"
+    },
+
+    // TraceFlag Debug Log Level
+    "trace_flag" : {
+        "ApexCode" : "Debug",
+        "ApexProfiling" : "Finest",
+        "Callout" : "Info",
+        "Database" : "Finest",
+        "System" : "Debug",
+        "Validation" : "Info",
+        "Visualforce" : "Info",
+        "Workflow" : "Info"
+    },
+
+    /**
+     * Below are default columns for exported csv file, however,
+     * you can remove the useless column that you think
+     */
+
+    // Sobject Workbook columns
+    "workbook_field_describe_columns" : [
+        "label", "name", "type", "length", "unique", "externalId", "precision",
+        "picklistValues", "calculatedFormula", "defaultValue", "controllerName",
+        "relationshipName", "referenceTo", "inlineHelpText", "nillable",
+        "createable", "custom", "dependentPicklist"
+    ],
+
+    // Workflow Rule columns
+    "workflow_rule_columns" : [
+        "sobject", "fullName", "triggerType", "active", "formula",
+        "booleanFilter", "criteriaItems", "actions", "description"
+    ],
+
+    // Workflow Field Update columns
+    "workflow_field_update_columns" : [
+        "sobject", "name", "fullName", "field", "operation",
+        "formula", "literalValue", "protected",
+        "notifyAssignee", "description"
+    ],
+
+    // Workflow Email Alert columns
+    "workflow_email_alert_columns" : [
+        "sobject", "fullName", "recipients", "template",
+        "senderType", "protected", "description"
+    ],
+
+    // Workflow Email Alert columns
+    "workflow_outbound_message_columns" : [
+        "sobject", "name", "fullName", "fields",
+        "endpointUrl", "includeSessionId", "apiVersion",
+        "integrationUser", "protected", "useDeadLetterQueue"
+    ],
+
+    // Workflow Email Alert columns
+    "workflow_task_columns" : [
+        "sobject", "fullName", "assignedTo", "assignedToType",
+        "description", "dueDateOffset", "notifyAssignee",
+        "offsetFromField", "priority", "protected",
+        "status", "subject"
+    ],
+
+    // Workflow Field Update columns
+    "validation_rule_columns" : [
+        "sobject", "fullName", "errorConditionFormula", "errorMessage",
+        "errorDisplayField", "active", "description"
+    ],
+
+    // Indicate whether include users in role when export role hierarchy
+    // Attention:
+    //      1. Not including portal roles
+    //      1. Not including portal users in exported users
+    "include_users_in_role_hierarchy": false,
+
+    // Indicate whether automatically remove slash in the response 
+    // when execute REST Test, for example,
+    // If response result is just like '"{\\"name\\":\\"test\\"}"'
+    // we will remove the \\ and convert it to json automatically
+    "remove_slash_for_rest_response": false,
+
+    "content_types": [
+        "application/fractals",
+        "application/futuresplash",
+        "application/msaccess",
+        "application/msword",
+        "application/octet-stream",
+        "application/pdf",
+        "application/pics-rules",
+        "application/pkcs7-mime",
+        "application/pkix-crl",
+        "application/postscript",
+        "application/smil",
+        "application/streamingmedia",
+        "application/vnd.adobe.pdx",
+        "application/vnd.adobe.workflow",
+        "application/vnd.adobe.xdp",
+        "application/vnd.adobe.xfd",
+        "application/vnd.android.package-archiv",
+        "application/vnd.ms-pki.pko",
+        "application/vnd.ms-pki.stl",
+        "application/vnd.ms-powerpoint",
+        "application/vnd.ms-project",
+        "application/vnd.ms-wpl",
+        "application/vnd.rn-realmedia",
+        "application/vnd.rn-realmedia-secure",
+        "application/vnd.rn-realsystem-rjs",
+        "application/vnd.rn-realsystem-rmx",
+        "application/vnd.rn-rsml",
+        "application/vnd.symbian.install",
+        "application/vnd.visio",
+        "application/x-001",
+        "application/x-bmp",
+        "application/x-c4t",
+        "application/x-cals",
+        "application/x-cel",
+        "application/x-cit",
+        "application/x-cmx",
+        "application/x-csi",
+        "application/x-cut",
+        "application/x-dbm",
+        "application/x-dib",
+        "application/x-drw",
+        "application/x-dwg",
+        "application/x-dxf",
+        "application/x-ebx",
+        "application/x-emf",
+        "application/x-frm",
+        "application/x-g4",
+        "application/x-gbr",
+        "application/x-gp4",
+        "application/x-hmr",
+        "application/x-hpl",
+        "application/x-hrf",
+        "application/x-icq",
+        "application/x-iff",
+        "application/x-igs",
+        "application/x-img",
+        "application/x-internet-signup",
+        "application/x-javascript",
+        "application/x-jpg",
+        "application/x-laplayer-reg",
+        "application/x-ltr",
+        "application/x-mil",
+        "application/x-ms-wmz",
+        "application/x-netcdf",
+        "application/x-out",
+        "application/x-pc5",
+        "application/x-pcl",
+        "application/x-pgl",
+        "application/x-pkcs12",
+        "application/x-pkcs7-certreqresp",
+        "application/x-plt",
+        "application/x-png",
+        "application/x-ppt",
+        "application/x-prt",
+        "application/x-ps",
+        "application/x-ras",
+        "application/x-red",
+        "application/x-rlc",
+        "application/x-sat",
+        "application/x-sdw",
+        "application/x-shockwave-flash",
+        "application/x-slb",
+        "application/x-sty",
+        "application/x-tg4",
+        "application/x-troff-man",
+        "application/x-vpeg005",
+        "application/x-vsd",
+        "application/x-wb1",
+        "application/x-wb3",
+        "application/x-wk4",
+        "application/x-wks",
+        "application/x-wmf",
+        "application/x-wpd",
+        "application/x-wr1",
+        "application/x-wrk",
+        "application/x-ws",
+        "application/x-x_t",
+        "application/x-x509-ca-cert",
+        "application/x-xls",
+        "application/x-xwd",
+        "audio/aiff",
+        "audio/basic",
+        "audio/mid",
+        "audio/mp1",
+        "audio/rn-mpeg",
+        "audio/vnd.rn-realaudio",
+        "audio/wav",
+        "audio/x-la-lms",
+        "audio/x-liquid-secure",
+        "audio/x-mei-aac",
+        "audio/x-ms-wma",
+        "audio/x-musicnet-download",
+        "audio/x-pn-realaudio",
+        "drawing/907",
+        "drawing/x-slk",
+        "drawing/x-top",
+        "image/fax",
+        "image/gif",
+        "image/jpeg",
+        "image/pnetvue",
+        "image/tiff",
+        "image/vnd.rn-realpix",
+        "image/x-icon",
+        "java/*",
+        "message/rfc822",
+        "Model/vnd.dwf",
+        "text/asa",
+        "text/asp",
+        "text/h323",
+        "text/html",
+        "text/plain",
+        "text/x-component",
+        "text/xml",
+        "text/x-vcard",
+        "video/mpeg",
+        "video/mpeg4",
+        "video/mpg",
+        "video/vnd.rn-realvideo",
+        "video/x-mpeg",
+        "video/x-ms-wmv"
+    ],
+
+    "docs" : {
+        "Apex Developer Guide": "apexcode",
+        "AJAX Toolkit Developer Guide": "ajax",
+        "Salesforce Reports and Dashboards REST API Developer Guide": "api_analytics",
+        "Analytics Cloud Dashboard JSON": "bi_dev_guide_json",
+        "Visualforce Developer Guide": "pages",
+        "Streaming API Developer Guide": "api_streaming",
+        "Salesforce Security Guide": "securityImplGuide",
+        "Bulk API Developer Guide": "api_asynch",
+        "REST API Developer Guide": "api_rest",
+        "Open CTI Developer Guide": "api_cti",
+        "Tooling API Developer Guide": "api_tooling",
+        "SOAP API Developer Guide": "api",
+        "Industries REST API Developer Guide": "api_rest_industries",
+        "Chatter REST API Developer Guide": "chatterapi",
+        "Metadata API Developer Guide": "api_meta",
+        "Console Integration Toolkit Developer Guide": "api_console",
+        "Object Reference": "object_reference",
+        "SOQL and SOSL Reference": "soql_sosl",
+        "Lightning Components Developer Guide": "lightning",
+        "Development Lifecycle Guide": "dev_lifecycle",
+        "Migration Tool Guide": "daas",
+        "Force.com Workbook": "workbook",
+        "Integration Workbook": "integration_workbook",
+        "Identity Implementation Guide": "identityImplGuide",
+        "Formulas Quick Reference": "salesforce_formulas_cheatsheet"
+    }
+}
